@@ -33,3 +33,5 @@ ops/*.retry
 .vs/
 /api/appsettings.Development.json
 /api/appsettings.json
+/publish/appsettings.json
+/publish/appsettings.Development.json

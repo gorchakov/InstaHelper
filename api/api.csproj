@@ -4,6 +4,7 @@
     <AssemblyName>api</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>api</PackageId>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Migrations\20190516175639_Initial.cs" />

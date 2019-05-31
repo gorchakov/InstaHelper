@@ -35,3 +35,5 @@ ops/*.retry
 /api/appsettings.json
 /publish/appsettings.json
 /publish/appsettings.Development.json
+/publish/DB
+DB

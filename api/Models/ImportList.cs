@@ -16,7 +16,7 @@ namespace aspnetCoreReactTemplate.Models
     public string TargetName { get; set; }
 
     [Required]
-    public DateTime Date { get; set; }
+    public DateTime? Date { get; set; }
 
     [Required]
     public int Count { get; set; }

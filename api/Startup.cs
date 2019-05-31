@@ -39,6 +39,7 @@ namespace aspnetCoreReactTemplate
             b => b.MigrationsAssembly("api")
         )
     );
+
       // Configure Entity Framework Initializer for seeding
       services.AddTransient<IDefaultDbContextInitializer, DefaultDbContextInitializer>();
 

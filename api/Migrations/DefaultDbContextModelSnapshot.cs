@@ -261,7 +261,8 @@ namespace api.Migrations
                     b.Property<int>("Count")
                         .HasColumnName("count");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime?>("Date")
+                        .IsRequired()
                         .HasColumnName("date");
 
                     b.Property<string>("TargetName")

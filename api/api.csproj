@@ -7,16 +7,6 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Migrations\20190516175639_Initial.cs" />
-    <Compile Remove="Migrations\20190516175639_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20190516180657_Inital.cs" />
-    <Compile Remove="Migrations\20190516180657_Inital.Designer.cs" />
-    <Compile Remove="Migrations\20190517191305_Add TargetName to Import object.cs" />
-    <Compile Remove="Migrations\20190517191305_Add TargetName to Import object.Designer.cs" />
-    <Compile Remove="Migrations\20190517191632_Add targetName to ImportObject.cs" />
-    <Compile Remove="Migrations\20190517191632_Add targetName to ImportObject.Designer.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <None Update="wwwroot\**\*;Views;Areas\**\Views">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>

@@ -35,8 +35,7 @@ namespace aspnetCoreReactTemplate
     {
       services.AddDbContext<DefaultDbContext>(options =>
         options.UseMySql(
-            Configuration.GetConnectionString("defaultConnection"),
-            b => b.MigrationsAssembly("api")
+            Configuration.GetConnectionString("defaultConnection")
         )
     );
 

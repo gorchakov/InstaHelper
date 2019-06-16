@@ -1,6 +1,4 @@
 import * as React from "react";
-import { Link, Redirect } from 'react-router-dom';
-import { RoutePaths } from './Routes';
 import FolowersService, { IFolower } from '../services/FolowersService';
 import { RouteComponentProps } from "react-router";
 

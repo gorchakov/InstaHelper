@@ -26,7 +26,6 @@ namespace aspnetCoreReactTemplate
 
     public static IWebHost BuildHost(string serverBindingUrl, string[] args) =>
         WebHost.CreateDefaultBuilder(args)
-      .UseIIS()
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseUrls(serverBindingUrl)
       .UseStartup<Startup>()

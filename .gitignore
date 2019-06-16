@@ -37,3 +37,4 @@ ops/*.retry
 /publish/appsettings.Development.json
 /publish/DB
 DB
+publish

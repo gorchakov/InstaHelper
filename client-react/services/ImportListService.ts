@@ -16,8 +16,8 @@ export interface IInstaUser {
     isPrivate: boolean;
     isVerified: boolean;
     pk: string;
-    profilePicture: string,
-    userName: string,
+    profilePicture: string;
+    userName: string;
     fullName: string;
 }
 

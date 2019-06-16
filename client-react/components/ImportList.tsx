@@ -65,34 +65,69 @@ export class ImportList extends React.Component<RouteComponentProps<any>, any> {
         return "https://www.instagram.com/" + userName;
     }
 
-    renderTable(followers: IInstaUser[]) {
-        return <table className="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th className="follower-image-preview">Img</th>
-                    <th>Name</th>
-                    <th>User name</th>
-                    <th>Is private</th>
-                    <th>Is verified</th>
-                </tr>
-            </thead>
-            <tbody>
-                {followers.map((followerObj) =>
-                    <tr key={followerObj.pk}>
-                        <td className="follower-image-preview">
-                            <img className="img-fluid" src={followerObj.profilePicture} />
-                        </td>
-                        <td>{followerObj.fullName}</td>
-                        <td>
-                            <a href={this.getInstagramUrlLink(followerObj.userName)} target="_blank">{followerObj.userName}</a> 
-                        </td>
-                        <td>{followerObj.isPrivate}</td>
-                        <td>{followerObj.isVerified}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>
+    getBoolValue(v: boolean) {
+        if (v)
+            return "+"
+        else
+            return ""
     }
+
+    renderTable(followers: IInstaUser[]) {
+        return <div className="table-responsive">
+            <table className="table table-striped table-hover table-sm">
+                <thead>
+                    <tr className="text-center">
+                        <th scope="col" className="follower-image-preview">Img</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">User name</th>
+                        <th scope="col">priv</th>
+                        <th scope="col">verif</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {followers.map((followerObj) =>
+                        <tr key={followerObj.pk}>
+                            <td className="follower-image-preview col-md-3">
+                                <img className="img-fluid" src={followerObj.profilePicture} />
+                            </td>
+                            <td>{followerObj.fullName}</td>
+                            <td>
+                                <a href={this.getInstagramUrlLink(followerObj.userName)} target="_blank">{followerObj.userName}</a>
+                            </td>
+                            <td>{this.getBoolValue(followerObj.isPrivate)}</td>
+                            <td>{this.getBoolValue(followerObj.isVerified)}</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+        </div>
+    }
+
+    renderTableNew(followers: IInstaUser[]) {
+        return <div className="table">
+            <div className="row">
+                <h6 className="col-2 text-center">Img</h6>
+                <h6 className="col-4 text-center">Name</h6>
+                <h6 className="col-4 text-center">User name</h6>
+                <h6 className="col-1 text-center">P</h6>
+                <h6 className="col-1 text-center">V</h6>
+            </div>
+            {followers.map((followerObj) =>
+                <div className="row" key={followerObj.pk}>
+                    <div className="col-2 follower-image-preview">
+                        <img className="img-fluid" src={followerObj.profilePicture} />
+                    </div>
+                    <div className="col-4">{followerObj.fullName}</div>
+                    <div className="col-4">
+                        <a href={this.getInstagramUrlLink(followerObj.userName)} target="_blank">{followerObj.userName}</a>
+                    </div>
+                    <div className="col-1">{this.getBoolValue(followerObj.isPrivate)}</div>
+                    <div className="col-1">{this.getBoolValue(followerObj.isVerified)}</div>
+                </div>
+            )}
+        </div>
+    }
+
 
     render() {
         return <div>
@@ -123,20 +158,22 @@ export class ImportList extends React.Component<RouteComponentProps<any>, any> {
                                 </div>
                                 <div className="col-1"><button type="button" className="btn btn-danger" onClick={(e) => this.delete(importObj)}>delete</button></div>
                             </div>
-                            {this.state.openedImportChangesId == importObj.id && this.state.importChanges.newFollowers &&
-                                this.state.importChanges.newFollowers.length > 0 &&
-                                <div>
-                                    <h4>New followers</h4>
-                                    {this.renderTable(this.state.importChanges.newFollowers)}
-                                </div>
-                            }
-                            {this.state.openedImportChangesId == importObj.id && this.state.importChanges.pastFollowers &&
-                                this.state.importChanges.pastFollowers.length > 0 &&
-                                <div>
-                                    <h4>Past followers</h4>
-                                    {this.renderTable(this.state.importChanges.pastFollowers)}
-                                </div>
-                            }
+                            <div className="row">
+                                {this.state.openedImportChangesId == importObj.id && this.state.importChanges.newFollowers &&
+                                    this.state.importChanges.newFollowers.length > 0 &&
+                                    <div className="col-md-6">
+                                        <h4>New followers</h4>
+                                        {this.renderTableNew(this.state.importChanges.newFollowers)}
+                                    </div>
+                                }
+                                {this.state.openedImportChangesId == importObj.id && this.state.importChanges.pastFollowers &&
+                                    this.state.importChanges.pastFollowers.length > 0 &&
+                                    <div className="col-md-6">
+                                        <h4>Past followers</h4>
+                                        {this.renderTableNew(this.state.importChanges.pastFollowers)}
+                                    </div>
+                                }
+                            </div>
                         </div>
                     )}
                 </div>
